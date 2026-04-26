@@ -5,9 +5,10 @@ import { eq } from "drizzle-orm";
 
 export async function PUT(
   req: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
-  const id = Number(params.id);
+  const { id } = await params;
+  const productId = Number(id);
   const data = await req.json();
 
   try {
@@ -15,7 +16,7 @@ export async function PUT(
     const [existing] = await db
       .select()
       .from(items)
-      .where(eq(items.id, id));
+      .where(eq(items.id, productId));
 
     if (!existing) {
       return NextResponse.json(
@@ -39,7 +40,7 @@ export async function PUT(
           : existing.thumbnailUrl,
     };
 
-    await db.update(items).set(updatedData).where(eq(items.id, id));
+    await db.update(items).set(updatedData).where(eq(items.id, productId));
 
     return NextResponse.json({ success: true });
   } catch (error) {

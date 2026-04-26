@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { CheckCircle, X } from "lucide-react";
 import { FiShoppingCart, FiCheckCircle } from "react-icons/fi";
+import toast from "react-hot-toast";
 
 type Props = {
   name: string;
@@ -41,6 +42,25 @@ export default function PurchaseButton({ name, price, cartQuantity }: Props) {
     }
 
     localStorage.setItem("cart", JSON.stringify(existingCart));
+
+toast.success(
+  <div className="flex items-center gap-3">
+    <span className="text-blue-600">
+      {name} added to cart
+    </span>
+  </div>,
+  {
+    duration: 3500,
+    position: "bottom-right",
+    style: {
+      background: "#ffffff",
+      borderRadius: "14px",
+      padding: "14px 18px",
+      boxShadow: "0 10px 25px rgba(0,0,0,0.12)",
+      border: "1px solid #e5e7eb",
+    },
+  }
+);
 
     setTimeout(() => {
       setShowModal(false);

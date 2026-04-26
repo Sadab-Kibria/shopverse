@@ -8,10 +8,11 @@ import { eq } from "drizzle-orm";
 ======================= */
 export async function GET(
   req: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const productId = Number(params.id);
+    const { id } = await params;
+    const productId = Number(id);
 
     if (isNaN(productId)) {
       return NextResponse.json({ error: "Invalid ID" }, { status: 400 });
@@ -39,10 +40,11 @@ export async function GET(
 ======================= */
 export async function PUT(
   req: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const productId = Number(params.id);
+    const { id } = await params;
+    const productId = Number(id);
     const body = await req.json();
 
     if (isNaN(productId)) {

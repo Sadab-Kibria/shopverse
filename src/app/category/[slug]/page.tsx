@@ -37,7 +37,7 @@ export default async function CategoryPage({
       <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
 
       <div className="p-8 max-w-7xl mx-auto">
-        <CategoryNav categories={categories} current={categorySlug} />
+        <CategoryNav categories={categories} />
 
         <h1 className="text-3xl font-bold mb-6 text-center text-blue-600">
           {categorySlug.charAt(0).toUpperCase() + categorySlug.slice(1)}

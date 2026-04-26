@@ -111,7 +111,7 @@ export default function AboutPage() {
   const duplicatedCategories = [...categories, ...categories];
 
   return (
-    <div className="bg-white text-slate-900 min-h-screen font-sans overflow-x-hidden">
+    <div className="bg-white text-slate-900 min-h-screen font-sans overflow-x-hidden" id="about">
       {/* --- SECTION 1: CATEGORY GRID SECTION --- */}
       <section className="bg-slate-50 py-20" id="category_nav">
         <div className="max-w-7xl mx-auto px-6">

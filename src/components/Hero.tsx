@@ -1,4 +1,5 @@
 "use client"
+import Link from "next/link";
 
 const Hero = () => {
   return (
@@ -26,9 +27,7 @@ const Hero = () => {
           <p className="text-md sm:text-lg md:text-xl mb-8 font-medium max-w-lg">
             Find the best products at unbeatable prices, delivered straight to your door.
           </p>
-          <button className="bg-blue-600 hover:bg-blue-700 px-8 py-2 mb-10 rounded-md border-dashed border-red-600 text-md font-extralight transition-all duration-300 transform hover:scale-105">
-            Explore
-          </button>
+          <Link href="#about" className="bg-blue-600 px-8 py-3 rounded-md">Explore</Link>
         </div>
       </div>
     </div>

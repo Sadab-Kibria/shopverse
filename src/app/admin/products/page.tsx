@@ -21,7 +21,7 @@ type Product = {
   price: number;
   stock: number;
   category: string;
-  description?: string;
+  description?: string | null;
   specs?: Record<string, any>;
 };
 

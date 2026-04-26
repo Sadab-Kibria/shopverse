@@ -97,7 +97,7 @@ export default async function ProductPage({ params }: Props) {
 
         {/* Category Navigation */}
         <div className="mb-8">
-          <CategoryNav categories={categories} current={productCategory} />
+          <CategoryNav categories={categories} />
         </div>
 
         {/* Main Product Card */}
@@ -211,7 +211,6 @@ export default async function ProductPage({ params }: Props) {
                   name={productName} 
                   price={productPrice}
                   cartQuantity={1}
-                  productId={product.id}
                 />
                 </div>
               </div>

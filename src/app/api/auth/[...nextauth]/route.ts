@@ -135,7 +135,7 @@ export const authOptions: NextAuthOptions = {
           if (!existingUser) {
             // Insert new user for Google
             await db.insert(users).values({
-              name: user.name ?? profile?.name ?? null,
+              name: user.name ?? profile?.name ?? user.email?.split('@')[0] ?? 'User',
               email: user.email,
               role: "user",
               // Google users don't get a password initially
@@ -153,7 +153,7 @@ export const authOptions: NextAuthOptions = {
       if (account?.provider === "credentials") {
         // Check if this is an admin login (from environment variables)
         const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
-        if (user.email === ADMIN_EMAIL) {
+        if (ADMIN_EMAIL && user.email === ADMIN_EMAIL) {
           // Admin login - check if admin exists in database
           try {
             const [existingAdmin] = await db

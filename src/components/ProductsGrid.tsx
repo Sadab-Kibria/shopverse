@@ -8,7 +8,7 @@ import { FiFilter, FiRefreshCw, FiChevronUp, FiChevronDown, FiDollarSign, FiTren
 type Product = {
   id: number;
   name: string;
-  description: string;
+  description: string | null;
   price: number;
   stock: number;
   category: string;
